@@ -1,0 +1,16 @@
+.search {
+  width: 39.875rem;
+  height: 3.375rempx;
+
+  padding: 1rem;
+
+  background: var(--gray-500);
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+  color: var(--gray-100);
+}
+
+.search:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 2px var(--purple-900);
+}
