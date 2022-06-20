@@ -3,6 +3,7 @@ import { Search } from './components/Search'
 import styles from './App.module.css'
 
 import './global.css'
+import { Tasks } from './components/Tasks'
 
 function App() {
   return (
@@ -10,6 +11,9 @@ function App() {
       <Header />
       <div className={styles.container}>
         <Search />
+        <div className={styles.tasks}>
+          <Tasks />
+        </div>
       </div>
     </div>
   )

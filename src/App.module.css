@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 90rem;
+  max-width: 46rem;
   margin: auto;
+}
+
+.container .tasks {
+  margin-top: 64px;
 }
