@@ -47,6 +47,7 @@
 }
 
 .tasks .count {
+  display: flex;
   font-size: 0.75rem;
   font-weight: 700;
   background: var(--gray-400);
@@ -72,10 +73,4 @@
 
 .tasks > svg {
   color: var(--gray-400);
-}
-
-.emptyMessage {
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 17px;
 }
