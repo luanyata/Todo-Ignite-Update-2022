@@ -28,7 +28,9 @@ export function Tasks({ tasks, onDelete, onDone }: TasksProps) {
         </div>
         <div className={styles.done}>
           <div className={styles.doneTaskTitle}> Concluidas</div>
-          <div className={styles.count}>{doneTasks}</div>
+          <div className={styles.count}>
+            {doneTasks} de {totalTasks}
+          </div>
         </div>
       </div>
 

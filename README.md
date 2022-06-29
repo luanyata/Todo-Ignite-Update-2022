@@ -1,7 +1,7 @@
 <img alt="Ignite Todo" src="./layout.png" />
 
 <h1 align="center">
-Desafio 1 - ToDo Ignite (Em Construcao)
+Desafio 1 - ToDo Ignite
 </h1>
 
 <p align="center">
