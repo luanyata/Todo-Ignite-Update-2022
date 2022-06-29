@@ -11,9 +11,10 @@ type TaskProps = {
 type TasksProps = {
   tasks: TaskProps[]
   onDelete: (id: string) => void
+  onDone: (id: string) => void
 }
 
-export function Tasks({ tasks, onDelete }: TasksProps) {
+export function Tasks({ tasks, onDelete, onDone }: TasksProps) {
   const totalTasks = tasks.length
   const doneTasks = tasks.filter((task) => task.done).length
   const isEmpty = totalTasks === 0
@@ -36,7 +37,12 @@ export function Tasks({ tasks, onDelete }: TasksProps) {
           <EmptyTasks />
         ) : (
           tasks.map((task) => (
-            <Task key={task.id} task={task} onDelete={onDelete} />
+            <Task
+              key={task.id}
+              task={task}
+              onDelete={onDelete}
+              onDone={onDone}
+            />
           ))
         )}
       </div>

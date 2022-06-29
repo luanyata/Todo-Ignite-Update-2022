@@ -26,12 +26,28 @@ function App() {
 
   const handleSaveTask = () => {
     const newTask = { id: uuid(), text, done: false }
-    setTasks((state) => [...state, newTask])
+    const newTasks = [...tasks, newTask].sort(
+      (a, b) => Number(a.done) - Number(b.done),
+    )
+    setTasks(newTasks)
     setText('')
   }
 
   const handleDeleteTask = (id: string) => {
     setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  const handleDoneTask = (id: string) => {
+    const newTasks = tasks
+      .map((task) => {
+        if (task.id === id) {
+          return { ...task, done: !task.done }
+        }
+        return task
+      })
+      .sort((a, b) => Number(a.done) - Number(b.done))
+
+    setTasks(newTasks)
   }
 
   return (
@@ -44,7 +60,11 @@ function App() {
           text={text}
         />
         <div className={styles.tasks}>
-          <Tasks tasks={tasks} onDelete={handleDeleteTask} />
+          <Tasks
+            tasks={tasks}
+            onDelete={handleDeleteTask}
+            onDone={handleDoneTask}
+          />
         </div>
       </div>
     </div>
