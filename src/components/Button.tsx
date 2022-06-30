@@ -1,13 +1,9 @@
 import { PlusCircle } from 'phosphor-react'
 import styles from './Button.module.css'
 
-type ButtonProps = {
-  onSave: () => void
-}
-
-export function Button({ onSave }: ButtonProps) {
+export function Button() {
   return (
-    <button className={styles.button} onClick={onSave}>
+    <button className={styles.button}>
       Criar <PlusCircle />
     </button>
   )

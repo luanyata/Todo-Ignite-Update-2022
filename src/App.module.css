@@ -9,3 +9,10 @@
 .container .tasks {
   margin-top: 64px;
 }
+
+.addTask {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: calc(0px - 1.5rem - 6px);
+}
