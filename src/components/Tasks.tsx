@@ -1,20 +1,12 @@
 import { EmptyTasks } from './EmptyTasks'
 import { Task } from './Task'
 import styles from './Tasks.module.css'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store'
 
-type TaskProps = {
-  id: string
-  text: string
-  done: boolean
-}
+export function Tasks() {
+  const { tasks } = useSelector((state: RootState) => state.tasks)
 
-type TasksProps = {
-  tasks: TaskProps[]
-  onDelete: (id: string) => void
-  onDone: (id: string) => void
-}
-
-export function Tasks({ tasks, onDelete, onDone }: TasksProps) {
   const totalTasks = tasks.length
   const doneTasks = tasks.filter((task) => task.done).length
   const isEmpty = totalTasks === 0
@@ -38,14 +30,7 @@ export function Tasks({ tasks, onDelete, onDone }: TasksProps) {
         {isEmpty ? (
           <EmptyTasks />
         ) : (
-          tasks.map((task) => (
-            <Task
-              key={task.id}
-              task={task}
-              onDelete={onDelete}
-              onDone={onDone}
-            />
-          ))
+          tasks.map((task) => <Task key={task.id} task={task} />)
         )}
       </div>
     </div>

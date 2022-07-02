@@ -1,16 +1,15 @@
-import { InputHTMLAttributes } from 'react'
 import styles from './Input.module.css'
 
 type InputProps = {
-  onCreate: (text: string) => void
   text: string
-} & InputHTMLAttributes<HTMLInputElement>
+  onChange: (text: string) => void
+}
 
-export function Input({ onCreate, text }: InputProps) {
+export function Input({ text, onChange }: InputProps) {
   return (
     <input
       value={text}
-      onChange={(e) => onCreate(e.target.value)}
+      onChange={(e) => onChange(e.target.value)}
       type="text"
       className={styles.search}
       placeholder="Adicione uma nova tarefa"

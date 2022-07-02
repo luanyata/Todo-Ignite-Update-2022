@@ -1,33 +1,38 @@
 import { Trash } from 'phosphor-react'
 import styles from './Task.module.css'
 
+import { useDispatch } from 'react-redux'
+import { TaskSagaTypes } from '../store/task.types'
+
 type TaskProps = {
-  id: string
-  text: string
-  done: boolean
+  task: {
+    id: string
+    text: string
+    done: boolean
+  }
 }
 
-type Props = {
-  task: TaskProps
-  onDelete: (id: string) => void
-  onDone: (id: string) => void
-}
+export function Task({ task }: TaskProps) {
+  const dispatch = useDispatch()
 
-export function Task({ task, onDelete, onDone }: Props) {
   return (
     <div className={styles.task}>
       <label className={styles.check}>
         <input
           type="checkbox"
           checked={task.done}
-          onChange={() => onDone(task.id)}
+          onChange={() => dispatch({ type: TaskSagaTypes.DONE, payload: task })}
         />
         <span className={styles.checkmark}></span>
       </label>
 
       <p className={task.done ? styles.done : styles.open}>{task.text}</p>
       <div className={styles.trash}>
-        <Trash onClick={() => onDelete(task.id)} />
+        <Trash
+          onClick={() =>
+            dispatch({ type: TaskSagaTypes.DELETE, payload: task.id })
+          }
+        />
       </div>
     </div>
   )
