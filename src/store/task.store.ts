@@ -15,7 +15,9 @@ const task = createSlice({
     tasks: [],
   } as TaskState,
   reducers: {
-    getTasks: (state) => state,
+    getTasks: (_, action) => {
+      return { tasks: action.payload }
+    },
     deleteTask: (state, action) => {
       state.tasks = state.tasks.filter((task) => task.id !== action.payload)
     },
@@ -24,8 +26,8 @@ const task = createSlice({
     },
     doneTask: (state, action) => {
       state.tasks = state.tasks.map((task) => {
-        if (task.id === action.payload) {
-          task.done = !task.done
+        if (task.id === action.payload.id) {
+          task = action.payload
         }
         return task
       })

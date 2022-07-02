@@ -1,7 +1,8 @@
 import { Trash } from 'phosphor-react'
 import styles from './Task.module.css'
-import { deleteTask, doneTask } from '../store/task.store'
+
 import { useDispatch } from 'react-redux'
+import { TaskSagaTypes } from '../store/task.types'
 
 type TaskProps = {
   task: {
@@ -20,14 +21,18 @@ export function Task({ task }: TaskProps) {
         <input
           type="checkbox"
           checked={task.done}
-          onChange={() => dispatch(doneTask(task.id))}
+          onChange={() => dispatch({ type: TaskSagaTypes.DONE, payload: task })}
         />
         <span className={styles.checkmark}></span>
       </label>
 
       <p className={task.done ? styles.done : styles.open}>{task.text}</p>
       <div className={styles.trash}>
-        <Trash onClick={() => dispatch(deleteTask(task.id))} />
+        <Trash
+          onClick={() =>
+            dispatch({ type: TaskSagaTypes.DELETE, payload: task.id })
+          }
+        />
       </div>
     </div>
   )

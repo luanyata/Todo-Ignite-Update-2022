@@ -1,16 +1,13 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 
 import { Header } from './components/Header'
 import { Tasks } from './components/Tasks'
-
 import { Input } from './components/Input'
 import { Button } from './components/Button'
 
 import { makeServer } from './server'
 import { useDispatch } from 'react-redux'
-import { createTask } from './store/task.store'
-
-import { v4 } from 'uuid'
+import { TaskSagaTypes } from './store/task.types'
 
 import styles from './App.module.css'
 import './global.css'
@@ -24,6 +21,10 @@ function App() {
 
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch({ type: TaskSagaTypes.GET })
+  }, [dispatch])
+
   const handleChange = (value: string) => {
     setText(value)
   }
@@ -32,11 +33,10 @@ function App() {
     e.preventDefault()
 
     const newTask = {
-      id: v4(),
       text,
       done: false,
     }
-    dispatch(createTask(newTask))
+    dispatch({ type: TaskSagaTypes.CREATE, payload: newTask })
     setText('')
   }
 
