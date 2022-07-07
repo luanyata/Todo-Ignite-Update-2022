@@ -2,7 +2,7 @@ import { Trash } from 'phosphor-react'
 import styles from './Task.module.css'
 
 import { useDispatch } from 'react-redux'
-import { TaskSagaTypes } from '../store/task.types'
+import { TaskSagaTypes } from '../../store/tasks/task.types'
 
 type TaskProps = {
   task: {

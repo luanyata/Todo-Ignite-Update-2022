@@ -1,8 +1,8 @@
-import { EmptyTasks } from './EmptyTasks'
-import { Task } from './Task'
+import { EmptyTasks } from '../EmptyTask'
+import { Task } from '../Task'
 import styles from './Tasks.module.css'
 import { useSelector } from 'react-redux'
-import { RootState } from '../store'
+import { RootState } from '../../store'
 
 export function Tasks() {
   const { tasks } = useSelector((state: RootState) => state.tasks)

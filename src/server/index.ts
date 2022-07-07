@@ -2,7 +2,7 @@ import { ActiveModelSerializer, createServer, Model } from 'miragejs'
 import { TaskFactory, TaskMock } from './models/task.mock'
 import { v4 } from 'uuid'
 
-export const makeServer = ({ environment = 'development' } = {}) => {
+export const makeServer = ({ environment = 'test' } = {}) => {
   const server = createServer({
     serializers: { ActiveModelSerializer },
     environment,
