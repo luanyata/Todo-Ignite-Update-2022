@@ -7,7 +7,7 @@ import { Button } from './components/Button'
 
 import { makeServer } from './server'
 import { useDispatch } from 'react-redux'
-import { TaskSagaTypes } from './store/task.types'
+import { TaskSagaTypes } from './store/tasks/task.types'
 
 import styles from './App.module.css'
 import './global.css'

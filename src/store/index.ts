@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
-import taskSaga from './task.sagas'
+import taskSaga from './tasks/task.sagas'
 
-import TaskReducer from './task.store'
+import TaskReducer from './tasks/task.store'
 
 const sagaMiddleware = createSagaMiddleware()
 

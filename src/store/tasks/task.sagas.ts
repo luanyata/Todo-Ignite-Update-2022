@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { api } from '../service'
+import { api } from '../../service'
 import { TaskActionTypes, TaskSagaTypes } from './task.types'
 
 type Task = {
